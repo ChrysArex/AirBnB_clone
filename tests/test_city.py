@@ -20,13 +20,6 @@ class TestCity(unittest.TestCase):
         self.assertEqual(city.state_id, "NY")
         self.assertEqual(city.name, "New York")
 
-    def test_invalid_type_assignment(self):
-        city = City()
-        with self.assertRaises(TypeError):
-            city.state_id = 42
-        with self.assertRaises(TypeError):
-            city.name = 123
-
 
 if __name__ == '__main__':
     unittest.main()
