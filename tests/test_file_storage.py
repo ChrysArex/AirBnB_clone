@@ -56,32 +56,39 @@ class TestFileStorage_methods(unittest.TestCase):
 
     def test_new_no_args(self):
         base = BaseModel()
-        amenity = Amenity()
-        city = City()
-        place = Place()
-        review = Review()
-        state = State()
-        user = User()
+        base_id = base.id
         models.storage.new(base)
+        amenity = Amenity()
+        amenity_id = amenity.id
         models.storage.new(amenity)
+        city = City()
+        city_id = city.id
         models.storage.new(city)
+        place = Place()
+        place_id = place.id
         models.storage.new(place)
+        review = Review()
+        review_id = review.id
         models.storage.new(review)
+        state = State()
+        state_id = state.id
         models.storage.new(state)
+        user = User()
+        user_id = user.id
         models.storage.new(user)
-        self.assertIn("BaseModel.{}".format(base.id), models.storage.all().keys())
+        self.assertIn("BaseModel.{}".format(base_id), models.storage.all().keys())
         self.assertIn(base, models.storage.all().values())
-        self.assertIn("Amenity.{}".format(amenity.id), models.storage.all().keys())
+        self.assertIn("Amenity.{}".format(amenity_id), models.storage.all().keys())
         self.assertIn(amenity, models.storage.all().values())
-        self.assertIn("City.{}".format(city.id), models.storage.all().keys())
+        self.assertIn("City.{}".format(city_id), models.storage.all().keys())
         self.assertIn(city, models.storage.all().values())
-        self.assertIn("Place.{}".format(place.id), models.storage.all().keys())
+        self.assertIn("Place.{}".format(place_id), models.storage.all().keys())
         self.assertIn(place, models.storage.all().values())
-        self.assertIn("Review.{}".format(review.id), models.storage.all().keys())
+        self.assertIn("Review.{}".format(review_id), models.storage.all().keys())
         self.assertIn(review, models.storage.all().values())
-        self.assertIn("State.{}".format(state.id), models.storage.all().keys())
+        self.assertIn("State.{}".format(state_id), models.storage.all().keys())
         self.assertIn(state, models.storage.all().values())
-        self.assertIn("User.{}".format(user.id), models.storage.all().keys())
+        self.assertIn("User.{}".format(user_id), models.storage.all().keys())
         self.assertIn(user, models.storage.all().values())
 
     def test_new_with_args(self):
@@ -90,30 +97,37 @@ class TestFileStorage_methods(unittest.TestCase):
 
     def test_save_no_args(self):
         base = BaseModel()
-        amenity = Amenity()
-        city = City()
-        place = Place()
-        review = Review()
-        state = State()
-        user = User()
+        base_id = base.id
         models.storage.new(base)
+        amenity = Amenity()
+        amenity_id = amenity.id
         models.storage.new(amenity)
+        city = City()
+        city_id = city.id
         models.storage.new(city)
+        place = Place()
+        place_id = place.id
         models.storage.new(place)
+        review = Review()
+        review_id = review.id
         models.storage.new(review)
+        state = State()
+        state_id = state.id
         models.storage.new(state)
+        user = User()
+        user_id = user.id
         models.storage.new(user)
-        filename = ""
+        models.storage.save()
 
         with open("file.json", "r") as file:
             filename = file.read()
-            self.assertIn("BaseModel.{}".format(base.id), filename)
-            self.assertIn("Amenity.{}".format(amenity.id), filename)
-            self.assertIn("City.{}".format(city.id), filename)
-            self.assertIn("Place.{}".format(place.id), filename)
-            self.assertIn("Review.{}".format(review.id), filename)
-            self.assertIn("State.{}".format(state.id), filename)
-            self.assertIn("User.{}".format(user.id), filename)
+            self.assertIn("BaseModel.{}".format(base_id), filename)
+            self.assertIn("Amenity.{}".format(amenity_id), filename)
+            self.assertIn("City.{}".format(city_id), filename)
+            self.assertIn("Place.{}".format(place_id), filename)
+            self.assertIn("Review.{}".format(review_id), filename)
+            self.assertIn("State.{}".format(state_id), filename)
+            self.assertIn("User.{}".format(user_id), filename)
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
@@ -121,29 +135,36 @@ class TestFileStorage_methods(unittest.TestCase):
 
     def test_reload_no_args(self):
         base = BaseModel()
-        amenity = Amenity()
-        city = City()
-        place = Place()
-        review = Review()
-        state = State()
-        user = User()
+        base_id = base.id
         models.storage.new(base)
+        amenity = Amenity()
+        amenity_id = amenity.id
         models.storage.new(amenity)
+        city = City()
+        city_id = city.id
         models.storage.new(city)
+        place = Place()
+        place_id = place.id
         models.storage.new(place)
+        review = Review()
+        review_id = review.id
         models.storage.new(review)
+        state = State()
+        state_id = state.id
         models.storage.new(state)
+        user = User()
+        user_id = user.id
         models.storage.new(user)
         models.storage.save()
         models.storage.reload()
         objs = FileStorage._FileStorage__objects
-        self.assertIn("BaseModel.{}".format(base.id), objs)
-        self.assertIn("Amenity.{}".format(amenity.id), objs)
-        self.assertIn("City.{}".format(city.id), objs)
-        self.assertIn("Place.{}".format(place.id), objs)
-        self.assertIn("Review.{}".format(review.id), objs)
-        self.assertIn("State.{}".format(state.id), objs)
-        self.assertIn("User.{}".format(user.id), objs)
+        self.assertIn("BaseModel.{}".format(base_id), objs)
+        self.assertIn("Amenity.{}".format(amenity_id), objs)
+        self.assertIn("City.{}".format(city_id), objs)
+        self.assertIn("Place.{}".format(place_id), objs)
+        self.assertIn("Review.{}".format(review_id), objs)
+        self.assertIn("State.{}".format(state_id), objs)
+        self.assertIn("User.{}".format(user_id), objs)
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
