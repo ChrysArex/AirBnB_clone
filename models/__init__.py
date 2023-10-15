@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Storage Mechanism """
 from models.engine.file_storage import FileStorage
 
 
