@@ -91,7 +91,7 @@ class TestBaseModel_save(unittest.TestCase):
         except IOError:
             pass
 
-    def deletion(self):
+    def changes(self):
         try:
             os.remove("file.json")
         except IOError:
