@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""commande line interpreter for the AirBnB project"""
+"""commande line interpreter for the AirBnB project
+"""
 
 
 import cmd
@@ -185,6 +186,363 @@ class HBNBCommand(cmd.Cmd):
                 to_be_updated.save()
             except KeyError:
                 print("** no instance found **")
+
+    def do_BaseModel(self, cmd):
+        """Manage commandes for the BaseModel class
+        """
+        class_name = "BaseModel"
+        if cmd == ".all()":
+            self.do_all(class_name)
+        elif cmd == ".count()":
+            data = storage.all()
+            count = 0
+            for key, value in data.items():
+                if key.split(".")[0] == class_name:
+                    count += 1
+            print(count)
+        elif cmd[:6] == ".show(":
+            obj_id = ""
+            for i in cmd[7:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_show(class_name + " " + obj_id)
+        elif cmd[:9] == ".destroy(":
+            obj_id = ""
+            for i in cmd[10:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_destroy(class_name + " " + obj_id)
+        elif cmd[:8] == ".update(":
+            args = cmd[9:].split(", ")
+            obj_id = ""
+            attr_name = ""
+            attr_value = ""
+            idx = 0
+            if len(args) == 2:
+                obj_id = args[0].replace('"', "")
+                data = json.load(args[1].replace(")", ""))
+                for attr_name, attr_value in data.items():
+                    self.do_update(class_name + " " + obj_id + " " +
+                                   attr_name + " " + attr_value)
+            else:
+                for i in args:
+                    if idx == 0:
+                        obj_id = i.replace('"', "")
+                    elif idx == 1:
+                        attr_name = i.replace('"', "")
+                    elif idx == 2:
+                        attr_value = i.replace(")", "")
+                    idx += 1
+                self.do_update(class_name + " " + obj_id + " " +
+                               attr_name + " " + attr_value)
+
+    def do_User(self, cmd):
+        """Manage commandes for the BaseModel class
+        """
+        class_name = "User"
+        if cmd == ".all()":
+            self.do_all(class_name)
+        elif cmd == ".count()":
+            data = storage.all()
+            count = 0
+            for key, value in data.items():
+                if key.split(".")[0] == class_name:
+                    count += 1
+            print(count)
+        elif cmd[:6] == ".show(":
+            obj_id = ""
+            for i in cmd[7:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_show(class_name + " " + obj_id)
+        elif cmd[:9] == ".destroy(":
+            obj_id = ""
+            for i in cmd[10:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_destroy(class_name + " " + obj_id)
+        elif cmd[:8] == ".update(":
+            args = cmd[9:].split(", ")
+            obj_id = ""
+            attr_name = ""
+            attr_value = ""
+            idx = 0
+            if len(args) == 2:
+                obj_id = args[0].replace('"', "")
+                data = json.load(args[1].replace(")", ""))
+                for attr_name, attr_value in data.items():
+                    self.do_update(class_name + " " + obj_id + " " +
+                                   attr_name + " " + attr_value)
+            else:
+                for i in args:
+                    if idx == 0:
+                        obj_id = i.replace('"', "")
+                    elif idx == 1:
+                        attr_name = i.replace('"', "")
+                    elif idx == 2:
+                        attr_value = i.replace(")", "")
+                    idx += 1
+                self.do_update(class_name + " " + obj_id + " " +
+                               attr_name + " " + attr_value)
+
+    def do_State(self, cmd):
+        """Manage commandes for the BaseModel class
+        """
+        class_name = "State"
+        if cmd == ".all()":
+            self.do_all(class_name)
+        elif cmd == ".count()":
+            data = storage.all()
+            count = 0
+            for key, value in data.items():
+                if key.split(".")[0] == class_name:
+                    count += 1
+            print(count)
+        elif cmd[:6] == ".show(":
+            obj_id = ""
+            for i in cmd[7:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_show(class_name + " " + obj_id)
+        elif cmd[:9] == ".destroy(":
+            obj_id = ""
+            for i in cmd[10:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_destroy(class_name + " " + obj_id)
+        elif cmd[:8] == ".update(":
+            args = cmd[9:].split(", ")
+            obj_id = ""
+            attr_name = ""
+            attr_value = ""
+            idx = 0
+            if len(args) == 2:
+                obj_id = args[0].replace('"', "")
+                data = json.load(args[1].replace(")", ""))
+                for attr_name, attr_value in data.items():
+                    self.do_update(class_name + " " + obj_id + " " +
+                                   attr_name + " " + attr_value)
+            else:
+                for i in args:
+                    if idx == 0:
+                        obj_id = i.replace('"', "")
+                    elif idx == 1:
+                        attr_name = i.replace('"', "")
+                    elif idx == 2:
+                        attr_value = i.replace(")", "")
+                    idx += 1
+                self.do_update(class_name + " " + obj_id + " " +
+                               attr_name + " " + attr_value)
+
+    def do_City(self, cmd):
+        """Manage commandes for the BaseModel class
+        """
+        class_name = "City"
+        if cmd == ".all()":
+            self.do_all(class_name)
+        elif cmd == ".count()":
+            data = storage.all()
+            count = 0
+            for key, value in data.items():
+                if key.split(".")[0] == class_name:
+                    count += 1
+            print(count)
+        elif cmd[:6] == ".show(":
+            obj_id = ""
+            for i in cmd[7:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_show(class_name + " " + obj_id)
+        elif cmd[:9] == ".destroy(":
+            obj_id = ""
+            for i in cmd[10:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_destroy(class_name + " " + obj_id)
+        elif cmd[:8] == ".update(":
+            args = cmd[9:].split(", ")
+            obj_id = ""
+            attr_name = ""
+            attr_value = ""
+            idx = 0
+            if len(args) == 2:
+                obj_id = args[0].replace('"', "")
+                data = json.load(args[1].replace(")", ""))
+                for attr_name, attr_value in data.items():
+                    self.do_update(class_name + " " + obj_id + " " +
+                                   attr_name + " " + attr_value)
+            else:
+                for i in args:
+                    if idx == 0:
+                        obj_id = i.replace('"', "")
+                    elif idx == 1:
+                        attr_name = i.replace('"', "")
+                    elif idx == 2:
+                        attr_value = i.replace(")", "")
+                    idx += 1
+                self.do_update(class_name + " " + obj_id + " " +
+                               attr_name + " " + attr_value)
+
+    def do_Amenity(self, cmd):
+        """Manage commandes for the BaseModel class
+        """
+        class_name = "Amenity"
+        if cmd == ".all()":
+            self.do_all(class_name)
+        elif cmd == ".count()":
+            data = storage.all()
+            count = 0
+            for key, value in data.items():
+                if key.split(".")[0] == class_name:
+                    count += 1
+            print(count)
+        elif cmd[:6] == ".show(":
+            obj_id = ""
+            for i in cmd[7:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_show(class_name + " " + obj_id)
+        elif cmd[:9] == ".destroy(":
+            obj_id = ""
+            for i in cmd[10:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_destroy(class_name + " " + obj_id)
+        elif cmd[:8] == ".update(":
+            args = cmd[9:].split(", ")
+            obj_id = ""
+            attr_name = ""
+            attr_value = ""
+            idx = 0
+            if len(args) == 2:
+                obj_id = args[0].replace('"', "")
+                data = json.load(args[1].replace(")", ""))
+                for attr_name, attr_value in data.items():
+                    self.do_update(class_name + " " + obj_id + " " +
+                                   attr_name + " " + attr_value)
+            else:
+                for i in args:
+                    if idx == 0:
+                        obj_id = i.replace('"', "")
+                    elif idx == 1:
+                        attr_name = i.replace('"', "")
+                    elif idx == 2:
+                        attr_value = i.replace(")", "")
+                    idx += 1
+                self.do_update(class_name + " " + obj_id + " " +
+                               attr_name + " " + attr_value)
+
+    def do_Place(self, cmd):
+        """Manage commandes for the BaseModel class
+        """
+        class_name = "Place"
+        if cmd == ".all()":
+            self.do_all(class_name)
+        elif cmd == ".count()":
+            data = storage.all()
+            count = 0
+            for key, value in data.items():
+                if key.split(".")[0] == class_name:
+                    count += 1
+            print(count)
+        elif cmd[:6] == ".show(":
+            obj_id = ""
+            for i in cmd[7:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_show(class_name + " " + obj_id)
+        elif cmd[:9] == ".destroy(":
+            obj_id = ""
+            for i in cmd[10:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_destroy(class_name + " " + obj_id)
+        elif cmd[:8] == ".update(":
+            args = cmd[9:].split(", ")
+            obj_id = ""
+            attr_name = ""
+            attr_value = ""
+            idx = 0
+            if len(args) == 2:
+                obj_id = args[0].replace('"', "")
+                data = json.load(args[1].replace(")", ""))
+                for attr_name, attr_value in data.items():
+                    self.do_update(class_name + " " + obj_id + " " +
+                                   attr_name + " " + attr_value)
+            else:
+                for i in args:
+                    if idx == 0:
+                        obj_id = i.replace('"', "")
+                    elif idx == 1:
+                        attr_name = i.replace('"', "")
+                    elif idx == 2:
+                        attr_value = i.replace(")", "")
+                    idx += 1
+                self.do_update(class_name + " " + obj_id + " " +
+                               attr_name + " " + attr_value)
+
+    def do_Review(self, cmd):
+        """Manage commandes for the BaseModel class
+        """
+        class_name = "Review"
+        if cmd == ".all()":
+            self.do_all(class_name)
+        elif cmd == ".count()":
+            data = storage.all()
+            count = 0
+            for key, value in data.items():
+                if key.split(".")[0] == class_name:
+                    count += 1
+            print(count)
+        elif cmd[:6] == ".show(":
+            obj_id = ""
+            for i in cmd[7:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_show(class_name + " " + obj_id)
+        elif cmd[:9] == ".destroy(":
+            obj_id = ""
+            for i in cmd[10:]:
+                if i == '"':
+                    break
+                obj_id += i
+            self.do_destroy(class_name + " " + obj_id)
+        elif cmd[:8] == ".update(":
+            args = cmd[9:].split(", ")
+            obj_id = ""
+            attr_name = ""
+            attr_value = ""
+            idx = 0
+            if len(args) == 2:
+                obj_id = args[0].replace('"', "")
+                data = json.load(args[1].replace(")", ""))
+                for attr_name, attr_value in data.items():
+                    self.do_update(class_name + " " + obj_id + " " +
+                                   attr_name + " " + attr_value)
+            else:
+                for i in args:
+                    if idx == 0:
+                        obj_id = i.replace('"', "")
+                    elif idx == 1:
+                        attr_name = i.replace('"', "")
+                    elif idx == 2:
+                        attr_value = i.replace(")", "")
+                    idx += 1
+                self.do_update(class_name + " " + obj_id + " " +
+                               attr_name + " " + attr_value)
 
     def help_create(self):
         print("Creates a new instance of BaseModel,")
