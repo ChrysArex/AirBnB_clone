@@ -18,19 +18,22 @@ class BaseModel():
 
     Methods:
         __init__(self, *args, **kwargs):
-            Initializes a new BaseModel instance. If keyword arguments (kwargs) are provided,
-            it populates the instance attributes with those values. If no kwargs are provided,
-            it generates a new unique ID and sets the creation and update timestamps.
+            Initializes a new BaseModel instance. If keyword arguments
+            (kwargs) are provided, it populates the instance attributes with
+            those values. If no kwargs are provided, it generates
+            a new unique ID and sets the creation and update timestamps.
 
         __str__(self):
-            Returns a string representation of the instance, including its class name,
-            ID, and attributes in dictionary format.
+            Returns a string representation of the instance, including its
+            class name, ID, and attributes in dictionary format.
 
         save(self):
-            Updates the 'updated_at' timestamp and saves the instance to storage.
+            Updates the 'updated_at' timestamp and saves the instance
+            to storage.
 
         to_dict(self):
-            Converts the instance into a dictionary containing its attributes, suitable for serialization.
+            Converts the instance into a dictionary containing its attributes,
+            suitable for serialization.
 
     """
     def __init__(self, *args, **kwargs):

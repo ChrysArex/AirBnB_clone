@@ -12,17 +12,39 @@ from models.user import User
 
 
 class FileStorage():
+    """
+    A class for managing storage and retrieval of objects in a JSON file.
+    """
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
+        """
+        Retrieve all objects currently stored in the FileStorage instance.
+
+        Returns:
+            dict: A dictionary containing all objects,
+            where keys are in the format "<class_name>.<object_id>"
+            and values are the objects themselves.
+        """
         return type(self).__objects
 
     def new(self, obj):
+        """
+        Add a new object to the FileStorage instance.
+
+        Args:
+            obj: The object to be added to the storage.
+
+        """
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         type(self).__objects[key] = obj
 
     def save(self):
+        """
+        Save the current objects in the FileStorage instance to a JSON file.
+
+        """
         obj_dict = {}
         for key, value in type(self).__objects.items():
             obj_dict[key] = value.to_dict()
@@ -31,6 +53,12 @@ class FileStorage():
             json.dump(obj_dict, file)
 
     def reload(self):
+        """
+        Reload objects from the JSON file into the FileStorage instance.
+
+        If the JSON file doesn't exist, this method does nothing.
+
+        """
         if exists(self.__file_path):
             with open(type(self).__file_path, "r") as file:
                 obj_dict = json.load(file)
