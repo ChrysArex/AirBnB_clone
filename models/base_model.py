@@ -6,6 +6,33 @@ from datetime import datetime
 
 
 class BaseModel():
+    """
+    BaseModel is the base class for all models in the application.
+    It provides common functionality for managing object attributes,
+    serialization, and storage.
+
+    Attributes:
+        id (str): A unique identifier for the instance.
+        created_at (datetime): The datetime when the instance was created.
+        updated_at (datetime): The datetime when the instance was last updated.
+
+    Methods:
+        __init__(self, *args, **kwargs):
+            Initializes a new BaseModel instance. If keyword arguments (kwargs) are provided,
+            it populates the instance attributes with those values. If no kwargs are provided,
+            it generates a new unique ID and sets the creation and update timestamps.
+
+        __str__(self):
+            Returns a string representation of the instance, including its class name,
+            ID, and attributes in dictionary format.
+
+        save(self):
+            Updates the 'updated_at' timestamp and saves the instance to storage.
+
+        to_dict(self):
+            Converts the instance into a dictionary containing its attributes, suitable for serialization.
+
+    """
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
