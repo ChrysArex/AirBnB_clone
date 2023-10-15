@@ -17,6 +17,7 @@ from models.user import User
 
 
 class TestFileStorage_init(unittest.TestCase):
+    """ Test Cases for the initialization """
     def test_FileStorage_init_no_args(self):
         self.assertEqual(type(FileStorage()), FileStorage)
 
@@ -31,6 +32,7 @@ class TestFileStorage_init(unittest.TestCase):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
 class TestFileStorage_methods(unittest.TestCase):
+    """ Test cases for saving FileStorage instances. """
     def creation(self):
         try:
             os.rename("file.json", "tmp")
