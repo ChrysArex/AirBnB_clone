@@ -31,6 +31,7 @@ class TestFileStorage_init(unittest.TestCase):
     def test_FileStorage_objects_priv_dict(self):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
+
 class TestFileStorage_methods(unittest.TestCase):
     """ Test cases for saving FileStorage instances. """
     def creation(self):
@@ -78,17 +79,21 @@ class TestFileStorage_methods(unittest.TestCase):
         user = User()
         user_id = user.id
         models.storage.new(user)
-        self.assertIn("BaseModel.{}".format(base_id), models.storage.all().keys())
+        self.assertIn("BaseModel.{}".format(base_id),
+                      models.storage.all().keys())
         self.assertIn(base, models.storage.all().values())
-        self.assertIn("Amenity.{}".format(amenity_id), models.storage.all().keys())
+        self.assertIn("Amenity.{}".format(amenity_id),
+                      models.storage.all().keys())
         self.assertIn(amenity, models.storage.all().values())
         self.assertIn("City.{}".format(city_id), models.storage.all().keys())
         self.assertIn(city, models.storage.all().values())
         self.assertIn("Place.{}".format(place_id), models.storage.all().keys())
         self.assertIn(place, models.storage.all().values())
-        self.assertIn("Review.{}".format(review_id), models.storage.all().keys())
+        self.assertIn("Review.{}".format(review_id),
+                      models.storage.all().keys())
         self.assertIn(review, models.storage.all().values())
-        self.assertIn("State.{}".format(state_id), models.storage.all().keys())
+        self.assertIn("State.{}".format(state_id),
+                      models.storage.all().keys())
         self.assertIn(state, models.storage.all().values())
         self.assertIn("User.{}".format(user_id), models.storage.all().keys())
         self.assertIn(user, models.storage.all().values())
