@@ -11,6 +11,7 @@ from models.base_model import BaseModel
 
 
 class TestBaseModel_init(unittest.TestCase):
+    """Test cases for initializing the BaseModel class."""
     def test_no_args_init(self):
         self.assertEqual(BaseModel, type(BaseModel()))
 
@@ -83,6 +84,7 @@ class TestBaseModel_init(unittest.TestCase):
 
 
 class TestBaseModel_save(unittest.TestCase):
+    """Test cases for saving BaseModel instances."""
     def creation(self):
         try:
             os.rename("file.json", "tmp")
@@ -126,6 +128,7 @@ class TestBaseModel_save(unittest.TestCase):
 
 
 class TestBaseModel_to_dict(unittest.TestCase):
+    """Test cases for the 'to_dict' method of BaseModel."""
     def test_to_dict_type(self):
         base = BaseModel()
         self.assertTrue(dict, type(base.to_dict()))
