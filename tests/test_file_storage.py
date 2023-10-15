@@ -31,13 +31,13 @@ class TestFileStorage_init(unittest.TestCase):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
 class TestFileStorage_methods(unittest.TestCase):
-    def setUp(self):
+    def creation(self):
         try:
             os.rename("file.json", "tmp")
         except IOError:
             pass
 
-    def tearDown(self):
+    def changes(self):
         try:
             os.remove("file.json")
         except IOError:
